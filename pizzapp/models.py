@@ -112,11 +112,11 @@ class Person(models.Model):
     )
 
 
-class Client(models.Model):
+class Customer(models.Model):
     person = models.OneToOneField(
         Person,
         on_delete=models.CASCADE,
-        help_text="The person corresponding to this client."
+        help_text="The person corresponding to this customer."
     )
     type_addresses = models.ForeignKey(
         TypeAddress,
@@ -447,10 +447,10 @@ class Order(models.Model):
         on_delete=models.PROTECT,
         help_text="The status."
     )
-    client = models.ForeignKey(
-        Client,
+    customer = models.ForeignKey(
+        Customer,
         on_delete=models.CASCADE,
-        help_text="The client."
+        help_text="The customer."
     )
     employed = models.ForeignKey(
         Employed,

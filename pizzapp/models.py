@@ -60,27 +60,15 @@ class Address(models.Model):
     )
 
 
-class TypeAddress(models.Model):
-    type = models.CharField(
-        max_length=100,
-        help_text="The type of address."
-    )
-    address = models.ForeignKey(
-        Address,
-        on_delete=models.PROTECT,
-        help_text="The address for this pizzeria."
-    )
-
-
 class Pizzeria(models.Model):
     name = models.CharField(
         max_length=100,
         help_text="The pizzeria name."
     )
-    type_address = models.OneToOneField(
-        TypeAddress,
+    address = models.ForeignKey(
+        Address,
         on_delete=models.CASCADE,
-        help_text="The type address for this pizzeria."
+        help_text="The address for this pizzeria."
     )
 
 
@@ -108,6 +96,7 @@ class Person(models.Model):
     )
     password = models.CharField(
         max_length=100,
+        null=True,
         help_text="The user password."
     )
 
@@ -118,11 +107,6 @@ class Customer(models.Model):
         on_delete=models.CASCADE,
         help_text="The person corresponding to this customer."
     )
-    type_addresses = models.ForeignKey(
-        TypeAddress,
-        on_delete=models.PROTECT,
-        help_text="The person list type addresses."
-    )
     registration_date = models.DateTimeField(
         auto_now_add=True,
         help_text="The registration date."
@@ -130,6 +114,23 @@ class Customer(models.Model):
     comment = models.TextField(
         null=True,
         help_text="The eventual comment."
+    )
+
+
+class TypeAddress(models.Model):
+    type = models.CharField(
+        max_length=100,
+        help_text="The type of address."
+    )
+    address = models.ForeignKey(
+        Address,
+        on_delete=models.PROTECT,
+        help_text="The address for this pizzeria."
+    )
+    customer = models.ForeignKey(
+        Customer,
+        on_delete=models.PROTECT,
+        help_text="The customer for this type address."
     )
 
 
@@ -156,7 +157,7 @@ class Employed(models.Model):
         auto_now_add=True,
         help_text="The registration date."
     )
-    inactivity_date = models.DateField(
+    inactivity_date = models.DateTimeField(
         null=True,
         help_text="The date for inactivity declaration."
     )
@@ -168,7 +169,7 @@ class Employed(models.Model):
 
 class Supplier(models.Model):
     company_name = models.CharField(
-        max_length=400,
+        max_length=100,
         help_text="The company name."
     )
     phone_number = PhoneNumberField(
@@ -181,8 +182,8 @@ class Supplier(models.Model):
         null=True,
         help_text="The phone number."
     )
-    type_address = models.OneToOneField(
-        TypeAddress,
+    address = models.ForeignKey(
+        Address,
         null=True,
         on_delete=models.CASCADE,
         help_text="The address for this supplier."
@@ -195,7 +196,7 @@ class Supplier(models.Model):
         auto_now_add=True,
         help_text="The registration date."
     )
-    inactivity_date = models.DateField(
+    inactivity_date = models.DateTimeField(
         null=True,
         help_text="The date for inactivity declaration."
     )
@@ -224,7 +225,7 @@ class Contact(models.Model):
         auto_now_add=True,
         help_text="The registration date."
     )
-    inactivity_date = models.DateField(
+    inactivity_date = models.DateTimeField(
         null=True,
         help_text="The date for inactivity declaration."
     )
@@ -277,7 +278,7 @@ class Component(models.Model):
         auto_now_add=True,
         help_text="The registration date."
     )
-    inactivity_date = models.DateField(
+    inactivity_date = models.DateTimeField(
         null=True,
         help_text="The date for inactivity declaration."
     )
@@ -312,7 +313,7 @@ class ComponentPrice(models.Model):
         auto_now_add=True,
         help_text="The registration date."
     )
-    inactivity_date = models.DateField(
+    inactivity_date = models.DateTimeField(
         null=True,
         help_text="The date for inactivity declaration."
     )
@@ -342,7 +343,7 @@ class Pizza(models.Model):
         auto_now_add=True,
         help_text="The registration date."
     )
-    inactivity_date = models.DateField(
+    inactivity_date = models.DateTimeField(
         null=True,
         help_text="The date for inactivity declaration."
     )
@@ -381,7 +382,7 @@ class PizzaLine(models.Model):
         auto_now_add=True,
         help_text="The registration date."
     )
-    inactivity_date = models.DateField(
+    inactivity_date = models.DateTimeField(
         null=True,
         help_text="The date for inactivity declaration."
     )
@@ -418,7 +419,7 @@ class PizzaCard(models.Model):
         auto_now_add=True,
         help_text="The registration date."
     )
-    inactivity_date = models.DateField(
+    inactivity_date = models.DateTimeField(
         null=True,
         help_text="The date for inactivity declaration."
     )
@@ -474,7 +475,7 @@ class Order(models.Model):
         auto_now_add=True,
         help_text="The registration date."
     )
-    inactivity_date = models.DateField(
+    inactivity_date = models.DateTimeField(
         null=True,
         help_text="The date for inactivity declaration."
     )
@@ -507,7 +508,7 @@ class OrderLine(models.Model):
         auto_now_add=True,
         help_text="The registration date."
     )
-    inactivity_date = models.DateField(
+    inactivity_date = models.DateTimeField(
         null=True,
         help_text="The date for inactivity declaration."
     )
@@ -540,7 +541,7 @@ class Command(models.Model):
         auto_now_add=True,
         help_text="The registration date."
     )
-    inactivity_date = models.DateField(
+    inactivity_date = models.DateTimeField(
         null=True,
         help_text="The date for inactivity declaration."
     )
@@ -584,7 +585,7 @@ class CommandLine(models.Model):
         auto_now_add=True,
         help_text="The registration date."
     )
-    inactivity_date = models.DateField(
+    inactivity_date = models.DateTimeField(
         null=True,
         help_text="The date for inactivity declaration."
     )
@@ -647,7 +648,7 @@ class StockMovement(models.Model):
         auto_now_add=True,
         help_text="The registration date."
     )
-    inactivity_date = models.DateField(
+    inactivity_date = models.DateTimeField(
         null=True,
         help_text="The date for inactivity declaration."
     )
@@ -695,7 +696,7 @@ class Payment(models.Model):
         auto_now_add=True,
         help_text="The registration date."
     )
-    inactivity_date = models.DateField(
+    inactivity_date = models.DateTimeField(
         null=True,
         help_text="The date for inactivity declaration."
     )

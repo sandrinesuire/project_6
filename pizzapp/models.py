@@ -552,7 +552,7 @@ class Command(models.Model):
 
 
 class CommandLine(models.Model):
-    command = models.OneToOneField(
+    command = models.ForeignKey(
         Command,
         on_delete=models.CASCADE,
         help_text="The command."
@@ -596,10 +596,6 @@ class CommandLine(models.Model):
 
 
 class StockMovement(models.Model):
-    datetime = models.DateTimeField(
-        auto_now_add=True,
-        help_text="The Datetime for the movement."
-    )
     component = models.ForeignKey(
         Component,
         on_delete=models.CASCADE,
@@ -625,19 +621,19 @@ class StockMovement(models.Model):
     quantity = models.DecimalField(
         max_digits=8,
         decimal_places=3,
-        null=True,
+        default=0,
         help_text="The quantity of the component."
     )
     stock_before = models.DecimalField(
         max_digits=8,
         decimal_places=3,
-        null=True,
+        default=0,
         help_text="The stock of the component before the movement."
     )
     stock_after = models.DecimalField(
         max_digits=8,
         decimal_places=3,
-        null=True,
+        default=0,
         help_text="The quantity of the component after the movement."
     )
     is_active = models.BooleanField(

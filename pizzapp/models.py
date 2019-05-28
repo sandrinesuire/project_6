@@ -700,3 +700,5 @@ class Payment(models.Model):
         null=True,
         help_text="The eventual comment."
     )
+
+

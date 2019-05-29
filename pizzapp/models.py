@@ -17,11 +17,6 @@ class Role(models.Model):
 
 
 class Address(models.Model):
-    title = models.CharField(
-        null=True,
-        max_length=100,
-        help_text="The address title."
-    )
     address_one = models.CharField(
         max_length=400,
         help_text="The first address line."
@@ -270,6 +265,12 @@ class Component(models.Model):
         default=0,
         help_text="The quantity in command for the component."
     )
+    reserved = models.DecimalField(
+        max_digits=8,
+        decimal_places=3,
+        default=0,
+        help_text="The quantity reserved for the component."
+    )
     is_active = models.BooleanField(
         default=True,
         help_text="The boolean for activity."
@@ -448,6 +449,10 @@ class Order(models.Model):
         on_delete=models.PROTECT,
         help_text="The status."
     )
+    is_paid = models.BooleanField(
+        default=False,
+        help_text="The boolean for payment."
+    )
     customer = models.ForeignKey(
         Customer,
         on_delete=models.CASCADE,
@@ -530,6 +535,7 @@ class Command(models.Model):
         help_text="The employed whose valid the command."
     )
     delay = models.DateTimeField(
+        null=True,
         help_text="The date for command delivery. This information can be set generally in command or individually in "
                   "command line"
     )

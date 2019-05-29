@@ -33,7 +33,6 @@ CREATE TABLE "public"."pizzapp_address"  (
 	"loc_address"    	text NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_address" OWNER TO "sandrine";
 
 
 CREATE TABLE "public"."pizzapp_command"  (
@@ -47,7 +46,6 @@ CREATE TABLE "public"."pizzapp_command"  (
 	"supplier_id"      	integer NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_command" OWNER TO "sandrine";
 
 
 CREATE TABLE "public"."pizzapp_commandline"  (
@@ -63,7 +61,6 @@ CREATE TABLE "public"."pizzapp_commandline"  (
 	"unit_of_measure_id"	integer NOT NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_commandline" OWNER TO "sandrine";
 
 
 CREATE TABLE "public"."pizzapp_component"  (
@@ -79,7 +76,6 @@ CREATE TABLE "public"."pizzapp_component"  (
 	"unit_of_measure_id"	integer NOT NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_component" OWNER TO "sandrine";
 
 
 CREATE TABLE "public"."pizzapp_componentprice"  (
@@ -94,7 +90,6 @@ CREATE TABLE "public"."pizzapp_componentprice"  (
 	"supplier_id"        	integer NOT NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_componentprice" OWNER TO "sandrine";
 
 
 CREATE TABLE "public"."pizzapp_contact"  (
@@ -107,7 +102,6 @@ CREATE TABLE "public"."pizzapp_contact"  (
 	"supplier_id"      	integer NOT NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_contact" OWNER TO "sandrine";
 CREATE TABLE "public"."pizzapp_customer"  (
 	"id"               	serial NOT NULL,
 	"registration_date"	timestamp with time zone NOT NULL DEFAULT NOW(),
@@ -115,7 +109,6 @@ CREATE TABLE "public"."pizzapp_customer"  (
 	"person_id"        	integer NOT NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_customer" OWNER TO "sandrine";
 
 
 CREATE TABLE "public"."pizzapp_employed"  (
@@ -128,7 +121,6 @@ CREATE TABLE "public"."pizzapp_employed"  (
 	"pizzeria_id"      	integer NOT NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_employed" OWNER TO "sandrine";
 
 
 CREATE TABLE "public"."pizzapp_employed_roles"  (
@@ -137,7 +129,6 @@ CREATE TABLE "public"."pizzapp_employed_roles"  (
 	"role_id"    	integer NOT NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_employed_roles" OWNER TO "sandrine";
 
 
 CREATE TABLE "public"."pizzapp_order"  (
@@ -154,7 +145,6 @@ CREATE TABLE "public"."pizzapp_order"  (
 	"status_id"        	integer NOT NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_order" OWNER TO "sandrine";
 
 
 CREATE TABLE "public"."pizzapp_orderline"  (
@@ -168,7 +158,6 @@ CREATE TABLE "public"."pizzapp_orderline"  (
 	"pizza_id"         	integer NOT NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_orderline" OWNER TO "sandrine";
 
 
 CREATE TABLE "public"."pizzapp_payment"  (
@@ -183,7 +172,6 @@ CREATE TABLE "public"."pizzapp_payment"  (
 	"payment_method_id"	integer NOT NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_payment" OWNER TO "sandrine";
 
 
 CREATE TABLE "public"."pizzapp_paymentmethod"  (
@@ -192,7 +180,6 @@ CREATE TABLE "public"."pizzapp_paymentmethod"  (
 	"description"	varchar(100) NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_paymentmethod" OWNER TO "sandrine";
 
 
 CREATE TABLE "public"."pizzapp_person"  (
@@ -204,7 +191,6 @@ CREATE TABLE "public"."pizzapp_person"  (
 	"password"    	varchar(100) NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_person" OWNER TO "sandrine";
 
 
 CREATE TABLE "public"."pizzapp_pizza"  (
@@ -218,7 +204,6 @@ CREATE TABLE "public"."pizzapp_pizza"  (
 	"comment"          	text NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_pizza" OWNER TO "sandrine";
 
 
 CREATE TABLE "public"."pizzapp_pizzacard"  (
@@ -232,7 +217,6 @@ CREATE TABLE "public"."pizzapp_pizzacard"  (
 	"pizzeria_id"      	integer NOT NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_pizzacard" OWNER TO "sandrine";
 
 
 CREATE TABLE "public"."pizzapp_pizzacard_pizzas"  (
@@ -241,7 +225,6 @@ CREATE TABLE "public"."pizzapp_pizzacard_pizzas"  (
 	"pizza_id"    	integer NOT NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_pizzacard_pizzas" OWNER TO "sandrine";
 
 
 CREATE TABLE "public"."pizzapp_pizzaline"  (
@@ -256,7 +239,6 @@ CREATE TABLE "public"."pizzapp_pizzaline"  (
 	"unit_of_measure_id"	integer NOT NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_pizzaline" OWNER TO "sandrine";
 
 
 CREATE TABLE "public"."pizzapp_pizzeria"  (
@@ -265,7 +247,6 @@ CREATE TABLE "public"."pizzapp_pizzeria"  (
 	"address_id"	integer NOT NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_pizzeria" OWNER TO "sandrine";
 
 
 CREATE TABLE "public"."pizzapp_role"  (
@@ -274,7 +255,6 @@ CREATE TABLE "public"."pizzapp_role"  (
 	"description"	text NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_role" OWNER TO "sandrine";
 
 
 CREATE TABLE "public"."pizzapp_status"  (
@@ -283,7 +263,6 @@ CREATE TABLE "public"."pizzapp_status"  (
 	"description"	varchar(100) NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_status" OWNER TO "sandrine";
 
 
 CREATE TABLE "public"."pizzapp_stockmovement"  (
@@ -301,7 +280,6 @@ CREATE TABLE "public"."pizzapp_stockmovement"  (
 	"unit_of_measure_id"	integer NOT NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_stockmovement" OWNER TO "sandrine";
 
 
 CREATE TABLE "public"."pizzapp_supplier"  (
@@ -316,7 +294,6 @@ CREATE TABLE "public"."pizzapp_supplier"  (
 	"address_id"       	integer NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_supplier" OWNER TO "sandrine";
 
 
 CREATE TABLE "public"."pizzapp_typeaddress"  (
@@ -326,7 +303,6 @@ CREATE TABLE "public"."pizzapp_typeaddress"  (
 	"customer_id"	integer NOT NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_typeaddress" OWNER TO "sandrine";
 
 
 CREATE TABLE "public"."pizzapp_unitofmeasure"  (
@@ -335,7 +311,6 @@ CREATE TABLE "public"."pizzapp_unitofmeasure"  (
 	"description"	varchar(100) NULL,
 	PRIMARY KEY("id")
 );
-ALTER TABLE "public"."pizzapp_unitofmeasure" OWNER TO "sandrine";
 
 
 
